@@ -6,6 +6,8 @@ Simple Arduino project to detect power outages. Following the KISS principle, th
 - Notify status using Serial
 - Turn ON/OFF two ON/OFF status LEDs
 
+![Schematic](ArduinoPowerOutageDetector_Schematic.png)
+
 ## Requirements
 
 - Arduino, any basic model is enough. Built on Arduino Nano compatible board with ATMega168P MCU.
@@ -27,3 +29,8 @@ When there is a power outage (a.k.a. the 5V AC-DC adapter is OFF) the optocouple
 - Control Pin (2): optocoupler 5V output (HIGH when power is ON, LOW when power is OFF)
 - ON LED (3): optional LED, turns ON when the power is ON, turns OFF when the power is OFF
 - OFF LED (4): optional LED, turns ON when the power is OFF, turns OFF when the power is ON
+
+## Versions
+
+- PowerOutageDetector_Simple: Simple/classic Arduino version with a constantly running loop
+- PowerOutageDetector_Interrupt_Sleep: version that uses LowPower library to turn OFF the Arduino after detecting a change on the power status and sending it through Serial, using External Pin Interrupts. The Arduino will wake up after detecting another change.
