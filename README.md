@@ -10,7 +10,7 @@ Simple Arduino project to detect power outages. Following the KISS principle, th
 
 ## Requirements
 
-- Arduino, any basic model is enough. Built on Arduino Nano compatible board with ATMega168P MCU.
+- Arduino, any basic model is enough, but Serial is required (internal Serial<->USB converter recommended). Built on Arduino Nano compatible board with ATMega168P MCU.
 - PC817C Optocoupler.
 - 5V AC-DC adapter.
 - A device to read the Serial output of the Arduino and perform the required actions on power ON or OFF (e.g. send a message to a MQTT topic, turn ON/OFF a computer...).
