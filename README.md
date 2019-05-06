@@ -14,6 +14,7 @@ Simple Arduino project to detect power outages. Following the KISS principle, th
 - PC817C Optocoupler.
 - 5V AC-DC adapter.
 - A device to read the Serial output of the Arduino and perform the required actions on power ON or OFF (e.g. send a message to a MQTT topic, turn ON/OFF a computer...).
+- (optional) 1x or 2x LED, 1 switch
 
 ## How does it work?
 
@@ -29,6 +30,7 @@ When there is a power outage (a.k.a. the 5V AC-DC adapter is OFF) the optocouple
 - Control Pin (2): optocoupler 5V output (HIGH when power is ON, LOW when power is OFF)
 - ON LED (3): optional LED, turns ON when the power is ON, turns OFF when the power is OFF
 - OFF LED (4): optional LED, turns ON when the power is OFF, turns OFF when the power is ON
+- Maintenance Mode Switch: optional switch that can be activated to disable the power outage detection when the 5V adapter will be disconnected temporary due to some maintenance.
 
 ## Versions
 
