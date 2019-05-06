@@ -14,8 +14,8 @@
 //Serial settings & messages
 #define SERIAL_SPEED 9600
 #define SERIAL_MSG_STARTUP "PowerOutageDetector:ONLINE"
-#define SERIAL_STATUS_ON "Power:ON"
-#define SERIAL_STATUS_OFF "Power:OFF"
+#define SERIAL_MSG_STATUS_ON "Power:ON"
+#define SERIAL_MSG_STATUS_OFF "Power:OFF"
 
 //Global variables
 byte powerStatus = 255;
@@ -33,16 +33,16 @@ bool readStatus() {
 
 void sendStatus() {
   if (powerStatus) {
-    Serial.println(SERIAL_STATUS_ON);
+    Serial.println(F(SERIAL_MSG_STATUS_ON));
   } else {
-    Serial.println(SERIAL_STATUS_OFF);
+    Serial.println(F(SERIAL_MSG_STATUS_OFF));
   }
 }
 
 ////////////////////////////////////////////////
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(SERIAL_SPEED);
   pinMode(PIN_INPUT, INPUT);
   pinMode(PIN_LED_ON, OUTPUT);
   pinMode(PIN_LED_OFF, OUTPUT);
