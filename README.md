@@ -25,14 +25,21 @@ Outside of the UPS, a 5V AC-DC adapter feeds the Optocoupler (so the Arduino -UP
 
 When there is a power outage (a.k.a. the 5V AC-DC adapter is OFF) the optocoupler turns off, so the Control Pin of the Arduino detects this change on the power status.
 
-## Pinout
+## Pinout & Components
 
 - Control Pin (2): optocoupler 5V output (HIGH when power is ON, LOW when power is OFF)
 - ON LED (3): optional LED, turns ON when the power is ON, turns OFF when the power is OFF
 - OFF LED (4): optional LED, turns ON when the power is OFF, turns OFF when the power is ON
 - Maintenance Mode Switch: optional switch that can be activated to disable the power outage detection when the 5V adapter will be disconnected temporary due to some maintenance.
+- Resistor values can be changed, but keep in mind maximum current ratings. Optocoupler is limited to 50mA on both input and output.
 
 ## Versions
 
 - PowerOutageDetector_Simple: Simple/classic Arduino version with a constantly running loop
 - PowerOutageDetector_Interrupt_Sleep: version that uses LowPower library to turn OFF the Arduino after detecting a change on the power status and sending it through Serial, using External Pin Interrupts. The Arduino will wake up after detecting another change.
+
+## Monitor script
+
+Shell script that listen to a single Serial port and send each new received line through MQTT. Designed to be used on OpenWRT without Bash available.
+
+Due to a bug on `PowerOutageDetector_Interrupt_Sleep` version, sometimes a certain status can be sent over Serial multiple times. To keep the Arduino sketch as simple as possible, a verification for repeated lines is performed on this script, instead on the microcontroller.
